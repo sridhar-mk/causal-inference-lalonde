@@ -143,7 +143,11 @@ plt.rcParams.update({
 # ── Helpers ───────────────────────────────────────────────────────────────────
 @st.cache_data
 def load_data():
+    df = pd.read_csv(DATA_URL)@st.cache_data
+def load_data():
     df = pd.read_csv(DATA_URL)
+    st.write("DEBUG columns:", df.columns.tolist())
+    return df
     df = df.rename(columns={
         "age": "age",
         "educ": "educ", 
