@@ -142,8 +142,8 @@ plt.rcParams.update({
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 @st.cache_data
-def load_data(url):
-    return pd.read_csv(url, index_col=0)
+def load_data():
+    return pd.read_csv(DATA_URL)
 
 def smd(df_in, col, treat_col="treat"):
     t = df_in[df_in[treat_col] == 1][col]
@@ -191,7 +191,7 @@ with st.sidebar:
     st.markdown("## ⚙ Config")
     st.markdown("---")
 
-    uploaded = "https://raw.githubusercontent.com/sridhar-mk/causal-inference-lalonde/master/lalonde.csv"
+    DATA_URL = "https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/MatchIt/lalonde.csv"
 
     st.markdown("**Covariates for PSM**")
     all_covs = ["age", "educ", "black", "hispan", "married", "nodegree", "re74", "re75"]
@@ -241,8 +241,7 @@ st.markdown(
 
 
 # ── Load data ─────────────────────────────────────────────────────────────────
-df = load_data(uploaded)
-
+df = load_data()
 if show_raw:
     st.dataframe(df.head(20), use_container_width=True)
 
