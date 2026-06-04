@@ -238,18 +238,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-if not uploaded:
-    st.info("👈 Upload `lalonde.csv` in the sidebar to begin.")
-    st.markdown("""
-**About this project:**  
-The LaLonde (1986) dataset is a classic benchmark for causal inference.  
-A naive comparison of post-training earnings between treated and control groups gives **−$635**,  
-suggesting job training *hurt* participants. That's wrong — it ignores selection bias.  
 
-This app applies **Propensity Score Matching** and **Difference-in-Differences** to recover  
-the true causal effect.
-""")
-    st.stop()
 
 # ── Load data ─────────────────────────────────────────────────────────────────
 df = load_data(uploaded)
