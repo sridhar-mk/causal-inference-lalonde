@@ -142,8 +142,8 @@ plt.rcParams.update({
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 @st.cache_data
-def load_data(uploaded_file):
-    return pd.read_csv(uploaded_file, index_col=0)
+def load_data(url):
+    return pd.read_csv(url, index_col=0)
 
 def smd(df_in, col, treat_col="treat"):
     t = df_in[df_in[treat_col] == 1][col]
@@ -191,7 +191,7 @@ with st.sidebar:
     st.markdown("## ⚙ Config")
     st.markdown("---")
 
-    uploaded = st.file_uploader("Upload lalonde.csv", type=["csv"])
+    uploaded = "https://raw.githubusercontent.com/sridhar-mk/causal-inference-lalonde/master/lalonde.csv"
 
     st.markdown("**Covariates for PSM**")
     all_covs = ["age", "educ", "black", "hispan", "married", "nodegree", "re74", "re75"]
