@@ -143,23 +143,9 @@ plt.rcParams.update({
 # ── Helpers ───────────────────────────────────────────────────────────────────
 @st.cache_data
 def load_data():
-    df = pd.read_csv(DATA_URL)@st.cache_data
-def load_data():
     df = pd.read_csv(DATA_URL)
-    st.write("DEBUG columns:", df.columns.tolist())
-    return df
-    df = df.rename(columns={
-        "age": "age",
-        "educ": "educ", 
-        "black": "black",
-        "hispan": "hispan",
-        "married": "married",
-        "nodegree": "nodegree",
-        "re74": "re74",
-        "re75": "re75",
-        "re78": "re78",
-        "treat": "treat"
-    })
+    df["black"]  = (df["race"] == "black").astype(int)
+    df["hispan"] = (df["race"] == "hispan").astype(int)
     df = df[["treat","age","educ","black","hispan","married","nodegree","re74","re75","re78"]]
     return df
 
