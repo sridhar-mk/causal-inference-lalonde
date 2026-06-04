@@ -143,7 +143,21 @@ plt.rcParams.update({
 # ── Helpers ───────────────────────────────────────────────────────────────────
 @st.cache_data
 def load_data():
-    return pd.read_csv(DATA_URL)
+    df = pd.read_csv(DATA_URL)
+    df = df.rename(columns={
+        "age": "age",
+        "educ": "educ", 
+        "black": "black",
+        "hispan": "hispan",
+        "married": "married",
+        "nodegree": "nodegree",
+        "re74": "re74",
+        "re75": "re75",
+        "re78": "re78",
+        "treat": "treat"
+    })
+    df = df[["treat","age","educ","black","hispan","married","nodegree","re74","re75","re78"]]
+    return df
 
 def smd(df_in, col, treat_col="treat"):
     t = df_in[df_in[treat_col] == 1][col]
