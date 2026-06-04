@@ -351,7 +351,7 @@ with tab1:
     styled = gs.style\
         .format({"Control": "{:,.2f}", "Treated": "{:,.2f}",
                  "Difference": "{:+,.2f}", "SMD (before)": "{:+.3f}"})\
-        .applymap(highlight_smd, subset=["SMD (before)"])
+        .map(highlight_smd, subset=["SMD (before)"])
 
     st.dataframe(styled, use_container_width=True)
 
